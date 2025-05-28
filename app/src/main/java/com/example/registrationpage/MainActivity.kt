@@ -1,5 +1,6 @@
 package com.example.registrationpage
 
+import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -11,8 +12,10 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.example.registrationpage.databinding.ActivityMainBinding
+import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +26,12 @@ class MainActivity : AppCompatActivity() {
         val userEmail: EditText = findViewById(R.id.user_email)
         val userPass: EditText = findViewById(R.id.user_pass)
         val button: Button = findViewById(R.id.button_reg)
+        val linkToAuth: TextView = findViewById(R.id.link_to_auth)
+
+        linkToAuth.setOnClickListener{
+            val intent = Intent(this, AuthActivity::class.java) //Новая страница на которую мы переходим
+            startActivity(intent)
+        }
 
         button.setOnClickListener {
             val login = userLogin.text.toString().trim()
